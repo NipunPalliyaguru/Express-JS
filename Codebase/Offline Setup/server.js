@@ -3,8 +3,12 @@ const app = express()
 
 
 app.get("/",(req,res)=>{
-    console.log("hi")
-    res.status(500).json({message : "Error"})
-})
+   
+   
+    res.send("Hello.......... world!!");
 
-app.listen(3000)
+
+    
+});
+
+app.listen(3001)
