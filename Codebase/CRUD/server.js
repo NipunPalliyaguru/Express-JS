@@ -1,10 +1,19 @@
 const express = require("express")
 const app = express()
 
+var product = require('./routes/product');
+
+var user = require('./routes/user');
+
+app.get('/', (req, res) => {
+   res.send('Hello World!')
+ })
+
 app.get('/read-users' , (req,res)=>{
 res.send("Users is here");
 
 app.use('/product',product);
+app.use('/user',user);
 
 });
 
@@ -19,34 +28,6 @@ app.get('/get-user-details',(req,res)=>{
     res.send(userOBJ);
 });
 
-
-//USER ALL CRUD
-
-app.post('/create-user' , (req,res)=>{
-    res.send("Users is here");
-    
- });
-
-
- app.put('/update-users' , (req,res)=>{
-    res.send("Users is here");
-  
- });
-
- app.get('/read-users' , (req,res)=>{
-    res.send("Users is here");
-  
- });
-
-
- app.delete('/delete-users' , (req,res)=>{
-    res.send("Users is here");
-  
- });
-
-
-
-
 //PRODUCT ALL CRUD
 
 
@@ -55,31 +36,6 @@ app.post('/create-product' , (req,res)=>{
     
  });
 
-
- app.put('/update-product' , (req,res)=>{
-    res.send("product is here");
-  
- });
-
- app.get('/read-product' , (req,res)=>{
-    res.send("product is here");
-  
- });
-
- app.get('/get-product-details',(req,res)=>{
-    const productOBJ={
-        id:1023,
-        name:"HDD",
-        lastName:"KSS",
-        status:true
-    }
-
-    res.send(productOBJ);
-});
- app.delete('/delete-product' , (req,res)=>{
-    res.send("product is here");
-  
- });
 
 
 app.listen(3000);

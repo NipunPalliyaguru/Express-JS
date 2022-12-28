@@ -16,4 +16,29 @@ router.get('/' , (req,res)=>{
  });
 
 
+ router.put('/update-product' , (req,res)=>{
+   res.send("product is here");
+ 
+});
+
+router.get('/read-product' , (req,res)=>{
+   res.send("product is here");
+ 
+});
+
+router.get('/get-product-details',(req,res)=>{
+   const productOBJ={
+       id:1023,
+       name:"HDD",
+       lastName:"KSS",
+       status:true
+   }
+
+   res.send(productOBJ);
+});
+router.delete('/delete-product' , (req,res)=>{
+   res.send("product is here");
+ 
+});
+
  module.exports=router;
