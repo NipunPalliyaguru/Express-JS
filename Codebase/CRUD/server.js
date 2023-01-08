@@ -1,22 +1,46 @@
 const express = require("express")
 const app = express()
+var product = require('./routers/product');
+var user = require('./routers/user');
 
-var product = require('./routes/product');
 
-var user = require('./routes/user');
+var mongoose = require("mongoose");
+var dbURL = require("./properties").DB_URL;
+
+mongoose.connect(dbURL);
+
+
+mongoose.connection.on("Connected",()=>{
+    console.log("DB CONNECT SUCCESSEED");
+});
+
+
+
+
+
+
+
+
+app.use('/product',product);
+ 
+app.use('/user',user);
 
 app.get('/', (req, res) => {
    res.send('Hello World!')
  })
 
+
+ //done
 app.get('/read-users' , (req,res)=>{
 res.send("Users is here");
 
-app.use('/product',product);
-app.use('/user',user);
+
+
 
 });
 
+
+//done
 app.get('/get-user-details',(req,res)=>{
     const userOBJ={
         id:10,
@@ -30,12 +54,13 @@ app.get('/get-user-details',(req,res)=>{
 
 //PRODUCT ALL CRUD
 
-
-app.post('/create-product' , (req,res)=>{
+//done
+app.get('/create-product' , (req,res)=>{
     res.send("product is here");
     
  });
 
 
-
 app.listen(3000);
+
+
